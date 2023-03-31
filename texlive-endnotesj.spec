@@ -1,6 +1,6 @@
 Name:		texlive-endnotesj
 Version:	47703
-Release:	1
+Release:	2
 Summary:	Japanese-style endnotes
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/endnotesj
