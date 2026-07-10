@@ -1,37 +1,24 @@
-Name:		texlive-endnotesj
-Version:	47703
-Release:	2
+%global tl_name endnotesj
+%global tl_revision 77682
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	3.0
+Release:	%{tl_revision}.1
 Summary:	Japanese-style endnotes
 Group:		Publishing
-URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/endnotesj
+URL:		https://www.ctan.org/tex-archive/language/japanese/endnotesj
 License:	bsd3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/endnotesj.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/endnotesj.doc.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/endnotesj.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/endnotesj.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-This package provides customized styles for endnotes to be used
-with Japanese documents. It can be used on pLaTeX, upLaTeX, and
-LuaLaTeX (LuaTeX-ja).
+This package provides customized styles for endnotes to be used with
+Japanese documents. It can be used on pLaTeX, upLaTeX, and LuaLaTeX
+(LuaTeX-ja).
 
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%{_texmfdistdir}/tex/latex/endnotesj
-%doc %{_texmfdistdir}/doc/latex/endnotesj
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
